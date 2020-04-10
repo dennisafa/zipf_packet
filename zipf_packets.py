@@ -1,9 +1,8 @@
-from scapy.all import *
 import numpy as np
-import sys
+from scapy.all import *
 
 num_flows = 100
-init_num_packets = 1000.0
+init_num_packets = 3500.0
 res = 0
 zipf_dist = []
 packets = []
