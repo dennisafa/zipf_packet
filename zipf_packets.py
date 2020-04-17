@@ -2,15 +2,19 @@ import numpy as np
 from scapy.all import *
 
 num_flows = 100
-init_num_packets = 3500.0
+total_packets = 16000
+summation = 0
 res = 0
 zipf_dist = []
 packets = []
-summation = 0
 
+for i in range(0, num_flows):
+    summation += 1.0/(i+1)
+
+init_num_packets = total_packets/summation
+print(init_num_packets)
 for i in range (0, num_flows):
     res = init_num_packets * (1.0/(i+1))
-    summation += res
     zipf_dist.append(int(res))
 
 for i in range(num_flows):
@@ -21,4 +25,4 @@ for i in range(num_flows):
         packets.append(flow_packet)
 
 np.random.shuffle(packets)
-wrpcap("udp_zipf_test.pcap", packets)
+wrpcap("udp_zipf_test.pcap", packets, append = False)
