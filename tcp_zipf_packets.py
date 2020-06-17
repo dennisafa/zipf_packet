@@ -34,7 +34,7 @@ def generate_zipf_pcap(num_flows, total_packets, packet_size, power, fin_flows_m
 
 
     np.random.shuffle(packets)
-    wrpcap("udp_zipf_test.pcap", packets, append = False)
+    wrpcap("tcp_zipf_test.pcap", packets, append = False)
 
 
 if __name__ == "__main__":
